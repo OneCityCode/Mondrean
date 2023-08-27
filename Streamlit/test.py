@@ -9,7 +9,7 @@ with st.container():
 
     st.text_input("Enter the name of the product you would like to learn about", key="productname")
 
-    st.session_state.productname
+    # st.session_state.productname
 
 
 
