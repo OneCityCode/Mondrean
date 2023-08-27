@@ -5,13 +5,13 @@ from streamlit_card import card
 from PIL import Image
 
 
-image = Image.open('Card.jpg')
+Image.open('./Images/Cardm.jpeg')
 
 # st.image.show(image)
 
 card(
     title="Minute ON Demand REview ANalysis",
     text="Some description",
-    image=('Card.jpg'),
+    image='./Images/Cardm.jpeg',
     url="https://www.google.com",
 )
