@@ -24,7 +24,7 @@ if len(pn) > 0:
   posts = soup.find_all('div', {'class': 'pb-xl'})
   urls = []
 
-  for post in posts[:5]:
+  for post in posts[:1]:
       post_url = "https://www.reddit.com" + post.find_all('a')[2]['href']
       urls.append(post_url)
 
