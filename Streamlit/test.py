@@ -10,7 +10,7 @@ from PIL import Image
 #     encoded = base64.b64encode(data)
 # data = "data:image/png;base64," + encoded.decode("utf-8")
 
-Image.open("Title.png")
+image = Image.open("Title.png")
 
-st.image("Title.png")
+st.image(image)
 
