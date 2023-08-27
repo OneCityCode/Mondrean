@@ -5,9 +5,9 @@ import numpy as np
 from PIL import Image
 
 
-img = Image.open('card.jpg')
+image = Image.open('home.jpg')
 
-st.image(img)
+st.image(image)
 
 # card(
 #     title="Minute ON Demand REview ANalysis",
