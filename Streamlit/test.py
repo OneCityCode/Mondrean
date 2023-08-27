@@ -1,7 +1,7 @@
 import streamlit as st
 # import pandas as pd
 # import numpy as np
-# from PIL import Image
+from PIL import Image
 # import base64
 
 
@@ -10,7 +10,7 @@ import streamlit as st
 #     encoded = base64.b64encode(data)
 # data = "data:image/png;base64," + encoded.decode("utf-8")
 
-# Image.open("Title.png")
+Image.open("Title.png")
 
 st.image("Title.png")
 
