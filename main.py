@@ -9,7 +9,7 @@ st.set_page_config(layout="centered", page_title="Mondrean", page_icon="🖌️"
 with st.container():
 
   #Creates header image and text input box
-  st.image("https://raw.githubusercontent.com/OneCityCode/Test/main/Streamlit/Title.png")
+  st.image("https://raw.githubusercontent.com/OneCityCode/Mondrean/main/Mondrean.png")
   pn = st.text_input("", max_chars=20, placeholder="Enter the name of a specific product here, and press enter.")
 
   #Initiates scraping on text input
