@@ -20,8 +20,8 @@ with st.container():
       my_query = pn
       query_depunc = ''.join(filter(lambda x: x.isalpha() or x.isdigit() or x.isspace(), my_query))
       query_despace = query_depunc.replace(' ', '+')
-      url_end = query_despace.strip()                                                                              #<Add quotes and opinions!
-      myurl = "https://www.reddit.com/search/?q=" + url_end
+      url_end = query_despace.strip()                                                                              
+      myurl = f'https://www.reddit.com/search/?q="{url_end}"'
       #Uses selenium to fetch site data
       driver = webdriver.Chrome()
       driver.get(myurl)
@@ -37,7 +37,7 @@ with st.container():
       commentsout = []
 
       #Iterates through subpages found in initial page, and reformats information to scrapable url
-      for post in posts[:12]:
+      for post in posts[:2]:
           post_url = "https://www.reddit.com" + post.find_all('a')[2]['href']
           urls.append(post_url)
 
@@ -47,17 +47,18 @@ with st.container():
       #Iterates though subpages
       for url in urls:
         #only loads subpage in data threshhold not met
-        if res < 3500:
+        if res < 3000:
           #scrapes subpage and extracts HTML
           driver.get(url)
           soup_post = BeautifulSoup(driver.page_source, 'html.parser')
           #Filters for comments in HTML
           for comment in soup_post.find_all('div', {'class': 'md'})[1:]:
             #If data threshhold not met, formats comment and adds comment to list and length to tracker             
-            if res < 3500:
+            if res < 3000:
               comshort = (comment.text)
               comstrip = comshort.strip()
-              res += len(comstrip)
+              comtoks = str.split(comstrip)
+              res += len(comtoks)
               commentsout.append(comstrip)
 
       #Updates status bar      
@@ -67,11 +68,12 @@ with st.container():
       driver.quit()
 
     #removes comments, until data length is below threshhold
-    while sum(len(s) for s in commentsout) > 3000:
+    while res > 3000:
+      res -= len(str.split(commentsout(0)))
       commentsout.pop(0)
     #Return comments and total length of data
     st.write(commentsout)
-    st.write(str(sum(len(s) for s in commentsout)))
+    st.write(str(res))
 
 
 # to gpt : Many of the comments which below, which are delimited with quotation marks, pertain to *search term*.
