@@ -10,7 +10,7 @@ with st.container():
 
   #Creates header image and text input box
   st.image("https://raw.githubusercontent.com/OneCityCode/Mondrean/main/Mondrean.png")
-  pn = st.text_input("pn", max_chars=20, placeholder="Enter the name of a specific product here, and press enter.", label_visibility = "visible")
+  pn = st.text_input("pn", max_chars=20, placeholder="Enter the name of a specific product here, and press enter.", label_visibility = "hidden")
 
   #Initiates scraping on text input
   if len(pn) > 0:
