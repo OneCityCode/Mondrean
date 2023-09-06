@@ -1,6 +1,6 @@
 # Use the official Python image.
 # https://hub.docker.com/_/python
-FROM python:3.11
+FROM python:3.9-slim
 
 # Install manually all the missing libraries
 RUN apt-get update
@@ -15,12 +15,15 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy local code to the container image.
-WORKDIR /Mondrean
+WORKDIR /app
 
-RUN git clone https://github.com/ .git .
+RUN git clone -b Mondrean-CR --single-branch https://github.com/OneCityCode/Mondrean.git .
 
-# Run the web service on container startup. Here we use the gunicorn
-# webserver, with one worker process and 8 threads.
-# For environments with multiple CPU cores, increase the number of workers
-# to be equal to the cores available.
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 main:app
+# Install Python dependencies.
+RUN pip3 install -r requirements.txt
+
+EXPOSE 8501
+
+HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+
+ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
