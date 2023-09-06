@@ -17,7 +17,7 @@ RUN pip install -r requirements.txt
 # Copy local code to the container image.
 WORKDIR /Mondrean
 
-RUN git clone https://github.com/streamlit/streamlit-example.git .
+RUN git clone https://github.com/ .git .
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
