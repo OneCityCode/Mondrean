@@ -1,6 +1,9 @@
 # Use the official Python image.
 # https://hub.docker.com/_/python
-FROM python:3.9-slim
+FROM python:3.11-slim
+
+# Copy local code to the container image.
+WORKDIR /app
 
 # Install manually all the missing libraries
 RUN apt-get update && apt-get install -y \
@@ -15,17 +18,11 @@ RUN apt-get update && apt-get install -y \
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
-# Install Python dependencies.
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
-# Copy local code to the container image.
-WORKDIR /app
-
+# copy code and assets from repo
 RUN git clone -b Mondrean-CR --single-branch https://github.com/OneCityCode/Mondrean.git .
 
 # Install Python dependencies.
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 8501
 
