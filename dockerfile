@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     software-properties-common \
     git \
-    wget\    
+    wget \    
     && rm -rf /var/lib/apt/lists/*
 
 # Install Chrome
@@ -19,10 +19,10 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 # copy code and assets from repo
-RUN git clone -b Mondrean-CR --single-branch https://github.com/OneCityCode/Mondrean.git .
+COPY . .
 
 # Install Python dependencies.
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 EXPOSE 8501
 
