@@ -22,7 +22,7 @@ RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 COPY . .
 
 # Install Python dependencies.
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 8501
 
