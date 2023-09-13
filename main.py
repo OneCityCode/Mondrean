@@ -6,7 +6,6 @@ import chromedriver_binary
 
 options = ChromeOptions()
 options.add_argument("--headless=new")
-options.add_argument("--disable-gpu")
 options.add_argument("window-size=1024,768")
 options.add_argument("--no-sandbox")
 
