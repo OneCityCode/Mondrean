@@ -4,11 +4,11 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("window-size=1024,768")
-chrome_options.add_argument("--no-sandbox")
+options = ChromeOptions()
+options.add_argument("--headless=new")
+options.add_argument("--disable-gpu")
+options.add_argument("window-size=1024,768")
+options.add_argument("--no-sandbox")
 
 #Provides tab title and icon
 st.set_page_config(layout="centered", page_title="Mondrean", page_icon="🖌️")
@@ -31,7 +31,7 @@ with st.container():
       url_end = query_despace.strip()                                                                              
       myurl = f'https://www.reddit.com/search/?q="{url_end}"'
       #Uses selenium to fetch site data
-      driver = webdriver.Chrome(chrome_options=chrome_options)
+      driver = webdriver.Chrome(options=options)
       driver.get(myurl)
       #Uses BeautifulSoup to return site HTML
       soup = BeautifulSoup(driver.page_source, 'html.parser')
