@@ -6,7 +6,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # copy code and assets from repo
-COPY . /app
+COPY . .
 
 # Install manually all the missing libraries
 RUN apt-get update && apt-get install -y \
@@ -35,8 +35,8 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
 # Install Python dependencies.
-RUN pip3 install --upgrade pip3
-RUN pip3 install -r /app/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 EXPOSE 8501
 
