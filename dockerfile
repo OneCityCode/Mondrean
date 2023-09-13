@@ -9,13 +9,13 @@ WORKDIR /app
 COPY . .
 
 # Install manually all the missing libraries
-#RUN apt-get update && apt-get install -y \
-#    build-essential \
-#    curl \
-#    software-properties-common \
-#    git \
-#    wget \    
-#    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    software-properties-common \
+    git \
+    wget \    
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Chrome
 #RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
