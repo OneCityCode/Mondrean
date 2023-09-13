@@ -1,5 +1,3 @@
-# Use the official Python image.
-# https://hub.docker.com/_/python
 FROM python:3.11-slim-bullseye
 
 # Copy local code to the container image.
