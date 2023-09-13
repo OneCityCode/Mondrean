@@ -35,8 +35,8 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
 # Install Python dependencies.
-RUN pip install --upgrade pip
-RUN pip install -r /app/requirements.txt
+RUN pip3 install --upgrade pip3
+RUN pip3 install -r /app/requirements.txt
 
 EXPOSE 8501
 
