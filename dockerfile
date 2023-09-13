@@ -1,6 +1,6 @@
 # Use the official Python image.
 # https://hub.docker.com/_/python
-FROM --platform=linux/amd64  python:3.11-slim
+FROM python:3.11-slim
 
 # Copy local code to the container image.
 WORKDIR /app
@@ -9,13 +9,13 @@ WORKDIR /app
 COPY . /app
 
 # Install manually all the missing libraries
-#RUN apt-get update && apt-get install -y \
-#    build-essential \
-#    curl \
-#    software-properties-common \
-#    git \
-#    wget \    
-#    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    software-properties-common \
+    git \
+    wget \    
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Chrome
 #RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
