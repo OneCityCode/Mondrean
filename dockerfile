@@ -24,9 +24,6 @@ ENV DISPLAY=:99
 
 EXPOSE 8501
 
-# ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
-
-
 RUN apt-get -y update
 
 RUN apt-get install -y google-chrome-stable
