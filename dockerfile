@@ -22,9 +22,6 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-# # Install Python dependencies.
-# RUN pip install --upgrade pip
-
 EXPOSE 8501
 
 # ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
@@ -42,4 +39,5 @@ RUN pip install -r requirements.txt
 
 COPY main.py .
 
-CMD [ “python”, “main.py” ]
+# CMD [ “python”, “main.py” ]
+ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
