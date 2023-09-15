@@ -1,6 +1,7 @@
 import streamlit as st
 from selenium import webdriver
 from bs4 import BeautifulSoup
+import chromedriver_binary
 from selenium.webdriver.chrome.options import Options
 
 options = webdriver.ChromeOptions()
