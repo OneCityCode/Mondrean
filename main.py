@@ -3,7 +3,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
 
-options = ChromeOptions()
+options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 options.add_argument("window-size=1024,768")
 options.add_argument("--no-sandbox")
