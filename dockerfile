@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     software-properties-common \
     git \   
-    wget \    
+    wget \
+    unzip \    
     && rm -rf /var/lib/apt/lists/*
 
 # set display port to avoid crash
@@ -34,7 +35,7 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 # install chromedriver
-RUN apt-get install -y -qq unzip
+# RUN apt-get install -y -qq unzip
 RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
