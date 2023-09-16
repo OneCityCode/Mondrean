@@ -4,16 +4,16 @@ mv "$WRAPPER_PATH" "$BASE_PATH"
 
 cat > "$WRAPPER_PATH" 
 
-umask 002 <<_EOF
+umask 002 
 
-# for var in "\$@"; do
-#    if [[ \$var == --lang=* ]]; then
-#       LANGUAGE=\${var//--lang=}
-#    fi
-# done
+for var in "\$@"; do
+   if [[ \$var == --lang=* ]]; then
+      LANGUAGE=\${var//--lang=}
+   fi
+done  
 
-# export LANGUAGE="\$LANGUAGE"
+export LANGUAGE="\$LANGUAGE" 
 
-# exec -a "\$0" "$BASE_PATH" --no-sandbox "\$@"
-# _EOF
-# chmod +x "$WRAPPER_PATH"
+exec -a "\$0" "$BASE_PATH" --no-sandbox "\$@"
+_EOF
+chmod +x "$WRAPPER_PATH" <<_EOF
