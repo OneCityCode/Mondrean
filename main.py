@@ -1,9 +1,10 @@
 import streamlit as st
-from selenium import webdriver
 from bs4 import BeautifulSoup
-import chromedriver_binary
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
+service = Service()
 options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 options.add_argument("window-size=1024,768")
@@ -30,7 +31,7 @@ with st.container():
       url_end = query_despace.strip()                                                                              
       myurl = f'https://www.reddit.com/search/?q="{url_end}"'
       #Uses selenium to fetch site data
-      driver = webdriver.Chrome(options=options)
+      driver = webdriver.Chrome(service=service, options=options)
       driver.get(myurl)
       #Uses BeautifulSoup to return site HTML
       soup = BeautifulSoup(driver.page_source, 'html.parser')
