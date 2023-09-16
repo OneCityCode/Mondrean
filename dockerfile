@@ -38,6 +38,16 @@ FROM python:3.11-slim-bullseye
 
 USER root
 
+# Install manually all the missing libraries
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    software-properties-common \
+    git \   
+    wget \
+    unzip \    
+    && rm -rf /var/lib/apt/lists/*
+
 # Google Chrome
 ARG CHROME_VERSION="google-chrome-stable"
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -80,6 +90,8 @@ RUN if [ ! -z "$CHROME_DRIVER_VERSION" ]; \
 
 # Dumping Browser name and version for config
 RUN echo "chrome" > /opt/selenium/browser_name
+
+WORKDIR /app
 
 # Install Python dependencies.
 COPY requirements.txt .
