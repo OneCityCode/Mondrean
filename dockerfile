@@ -1,8 +1,9 @@
 # Use the official Python image.
-FROM python:3.11-slim-bullseye
+FROM ubuntu:20.04
 
 # Install all the missing libraries
 RUN apt-get update && apt-get install -y \
+    python3.11 \
     build-essential \
     curl \
     software-properties-common \
