@@ -37,7 +37,7 @@ with st.container():
       #Uses BeautifulSoup to return site HTML
       soup = BeautifulSoup(driver.page_source, 'html.parser')
       #Filters relevent HTML content
-      posts = soup.find_all('div', {'class': 'pb-xl'})
+      posts = soup.find_all('post-consume-tracker')
       #urls stores information of subpages to scrape that were found
       urls = []
       #res keeps track of total amount of useful data that has been scraped
@@ -46,8 +46,8 @@ with st.container():
       commentsout = []
 
       #Iterates through subpages found in initial page, and reformats information to scrapable url
-      for post in posts[:2]:
-          post_url = "https://www.reddit.com" + post.find_all('a')[2]['href']
+      for post in posts[:10]:
+          post_url = "https://www.reddit.com" + post.find_all('a')[0]['href']
           urls.append(post_url)
 
       #Updates status bar
