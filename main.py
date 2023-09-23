@@ -95,8 +95,8 @@ with st.container():
     # Parse comment data using openai api
     prompt = f"""Many of the following comments, which are delimited with \
         quotation marks, pertain to {my_query}. Use the relevant information \
-        from those comments to create a wholly unique, 500 word review of \
-        {my_query}, in the style of a professional journalist. {commentsout}"""
+        from those comments to create a wholly unique, 300 word review of \
+        {my_query}, in a personal style. {commentsout}"""
     
     completion = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
