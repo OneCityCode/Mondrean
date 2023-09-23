@@ -35,7 +35,7 @@ with st.container():
   # Initiates scraping on text input
   if len(pn) > 0:
     # Creates status update bar
-    with st.status("Locating relevent information", expanded=True):
+    with st.status("Locating relevant information", expanded=True):
       # Reformats the text input and transforms it to a scrapable url.
       my_query = pn
       query_depunc = ''.join(filter(lambda x: x.isalpha() or x.isdigit() or x.isspace(), my_query))
