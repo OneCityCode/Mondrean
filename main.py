@@ -94,9 +94,9 @@ with st.container():
 
     # Parse comment data using openai api
     prompt = f"""Many of the following comments, which are delimited with \
-        quotation marks, pertain to {my_query}. Provide a wholly unique summary \
-        of those comments the in the style of a personal review, with a length of \
-        500 words. {commentsout}"""
+        quotation marks, pertain to {my_query}. Use the relevant information \
+        from those comments to create a wholly unique, 500 word review of \
+        {my_query}, in the style of a professional journalist. {commentsout}"""
     
     completion = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
@@ -108,7 +108,8 @@ with st.container():
     st.write(completion.choices[0].message.content)
 
   # About information
-  if st.button('About'):
+  on = st.toggle('About')
+  if on:
     st.write("This page was written in Python using the Streamlit framework. Data is \
     collected on demand from the web using Selenium, Beautiful Soup, and Chrome. The \
     collected data is then parsed by GPT 3.5 using the openai API. This app has been \
