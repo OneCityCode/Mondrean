@@ -106,3 +106,11 @@ with st.container():
     
     # Return parsed information
     st.write(completion.choices[0].message.content)
+
+  # About information
+  if st.button('About'):
+    st.write("This page was written in Python using the Streamlit framework. Data is \
+    collected on demand from the web using Selenium, Beautiful Soup, and Chrome. The \
+    collected data is then parsed by GPT 3.5 using the openai API. This app has been \
+    containerized using Docker Desktop and deployed via Google Cloud Run. The source \
+    code can be viewed at https://github.com/OneCityCode/Mondrean")
